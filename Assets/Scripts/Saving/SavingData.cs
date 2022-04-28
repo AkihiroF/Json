@@ -33,16 +33,22 @@ public class SavingData : MonoBehaviour
     public void Remove(Items remit)
     {
         List<InputEmpty> newempty = new List<InputEmpty>();
-        for (int i =0; i<empty.Count-1; i++)
+        bool ar = false;
+        for (int i = empty.Count - 1; i >= 0; i--)
         {
-            if(empty[i].item == remit)
+            if (empty[i].item == remit && ar == false)
             {
-                empty.Remove(empty[i]);
+                ar = true;
+                empty.RemoveAt(i);
+                continue;
             }
+        }
+        for (int i = 0; i < empty.Count; i++)
+        {
             newempty.Add(empty[i]);
         }
         Dell();
-        for(int i = 0; i < newempty.Count; i++)
+        for (int i = 0; i < newempty.Count; i++)
         {
             SaveData(newempty[i].item);
         }

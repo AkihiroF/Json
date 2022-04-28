@@ -28,10 +28,10 @@ public class OpenBox : MonoBehaviour
     }
     public void CreateItemInInventory(Items item)
     {
-        if(item.typeitem == Items.TypeBox.Delete && start == false)
+        if(item.typeitem == Items.TypeBox.Delete)
         {
-            black.Dell(save);
             blackpanel.Close();
+            black.Dell(save);
         }
         else if(ChekInventory(item) == false)
         {

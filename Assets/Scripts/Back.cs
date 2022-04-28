@@ -5,15 +5,16 @@ using UnityEngine;
 public class Back : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
+    private bool active;
     private void Start()
     {
-        panel.SetActive(false);
+        active = false;
+        panel.SetActive(active);
     }
 
     public void Close()
     {
-#pragma warning disable CS0618 // Тип или член устарел
-        panel.SetActive(!panel.active);
-#pragma warning restore CS0618 // Тип или член устарел
+        active =! active;
+        panel.SetActive(active);
     }
 }

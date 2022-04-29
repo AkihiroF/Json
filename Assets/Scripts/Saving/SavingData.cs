@@ -12,17 +12,13 @@ public class SavingData : MonoBehaviour
 
     private void Start()
     {
-        if (File.Exists("/" + filename))
+        empty = JsonSave.ReadListFromJSON<InputEmpty>(filename);
+        create.start = true;
+        for (int i = 0; i < empty.Count; i++)
         {
-            empty = JsonSave.ReadListFromJSON<InputEmpty>(filename);
-            create.start = true;
-            for (int i = 0; i < empty.Count; i++)
-            {
-                create.CreateItemInInventory(empty[i].item);
-            }
-            create.start = false;
+            create.CreateItemInInventory(empty[i].item);
         }
-        else create.start = false;
+        create.start = false;
     }
     public void SaveData(Items item)
     {
